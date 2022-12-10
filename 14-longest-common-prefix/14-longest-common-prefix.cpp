@@ -1,7 +1,7 @@
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        if(strs.size()==1) return strs[0];
+        // if(strs.size()==1) return strs[0];
         map<string,int> m;
         for(auto s:strs){
             string p;
@@ -13,7 +13,7 @@ public:
         int ans = 0;
         string an;
         for(auto me:m){
-            if(me.second >= ans){
+            if(me.second >= ans and me.second == strs.size()){
                 if(me.first.length()>an.length()){
                     an=me.first;
                     ans = me.second;
