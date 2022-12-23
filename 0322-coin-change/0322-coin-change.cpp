@@ -1,16 +1,25 @@
 class Solution {
 public:
-    int coinChange(vector<int>& coins, int amount) {
-        int Max = amount + 1;
-        vector<int> dp(amount + 1, Max);
-        dp[0] = 0;
-        for (int i = 1; i <= amount; i++) {
-            for (int j = 0; j < coins.size(); j++) {
-                if (coins[j] <= i) {
-                    dp[i] = min(dp[i], dp[i - coins[j]] + 1);
+    int coinChange(vector<int>& c, int amount) {
+        int a = amount;
+        const int inf = a+1;
+        if(a==0) return 0;
+        
+        vector<int> dp(amount+1,inf);
+        dp[0]=0;
+        // for(auto x:c) dp[x]=1;
+        // sort(begin(c),end(c));
+        for(int i = 0; i <= a; i++){
+            for(int j = 0; j < c.size(); j++){
+                if(c[j]<=i){
+                    // int res = dp[i-]==inf?inf:dp[i-t]+1;
+                    dp[i]=min(dp[i],dp[i-c[j]]+1);
                 }
             }
         }
-        return dp[amount] > amount ? -1 : dp[amount];
+        if(dp[amount]> amount)return -1;
+        return dp[a];
     }
 };
+
+        
