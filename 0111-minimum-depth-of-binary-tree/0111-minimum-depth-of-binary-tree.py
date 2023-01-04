@@ -18,8 +18,11 @@ class Solution:
                 u = q.popleft()
                 if u.left is None and u.right is None:
                     ans = min(ans,d)
+                    break
                 for v in [u.left, u.right]:
                     if v:
                         q.append(v)
+            if ans is not inf:
+                return ans
             d+=1
-        return ans        
+        return ans
